@@ -14,7 +14,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchTextField: UITextField!
     
-    lazy var geocoder = CLGeocoder()
     var searchCompleter = MKLocalSearchCompleter()
     var searchResult = [MKLocalSearchCompletion]()
     
@@ -73,6 +72,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 DispatchQueue.main.async {
                     CityManager.shared.cities.append(currentCity)
                     self.dismiss(animated: true, completion: nil)
+                    self.resignFirstResponder()
                 }
                 
             } else {
@@ -81,7 +81,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
         }
-        self.resignFirstResponder()
         tableView.reloadData()
     }
 }
