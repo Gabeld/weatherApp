@@ -7,21 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA27286D2063E21600DCD852 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA27286C2063E21600DCD852 /* ListViewController.swift */; };
+		FA4372D5207E1E0C009984A0 /* Timisoara.gpx in Resources */ = {isa = PBXBuildFile; fileRef = FA4372D4207E1E0C009984A0 /* Timisoara.gpx */; };
 		FA53BB41205D3C1D00C203F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53BB40205D3C1D00C203F9 /* AppDelegate.swift */; };
-		FA53BB43205D3C1D00C203F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53BB42205D3C1D00C203F9 /* ViewController.swift */; };
 		FA53BB46205D3C1D00C203F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA53BB44205D3C1D00C203F9 /* Main.storyboard */; };
 		FA53BB48205D3C1D00C203F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA53BB47205D3C1D00C203F9 /* Assets.xcassets */; };
 		FA53BB4B205D3C1D00C203F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA53BB49205D3C1D00C203F9 /* LaunchScreen.storyboard */; };
+		FA53BB53205D3C4E00C203F9 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53BB52205D3C4E00C203F9 /* WeatherData.swift */; };
+		FA53BB55205D3DF000C203F9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53BB54205D3DF000C203F9 /* City.swift */; };
+		FA53BB57205D3F6800C203F9 /* WeatherHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53BB56205D3F6800C203F9 /* WeatherHandler.swift */; };
+		FAA2A71D206B106000BFB51A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2A71C206B106000BFB51A /* SearchViewController.swift */; };
+		FAA2A721206B1A3100BFB51A /* SuggestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2A720206B1A3100BFB51A /* SuggestionsTableViewCell.swift */; };
+		FAA2A723206D65EC00BFB51A /* DetailedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2A722206D65EC00BFB51A /* DetailedCollectionViewCell.swift */; };
+		FAA2A725206D661900BFB51A /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2A724206D661900BFB51A /* DetailedViewController.swift */; };
+		FAAECDDC20654BD500B0B484 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAECDDB20654BD500B0B484 /* ListCollectionViewCell.swift */; };
+		FAB2BD98206A930100C7F831 /* AddCityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2BD97206A930100C7F831 /* AddCityCollectionViewCell.swift */; };
+		FAB2BD9C206AE26200C7F831 /* CityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2BD9B206AE26200C7F831 /* CityManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA27286C2063E21600DCD852 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		FA4372D4207E1E0C009984A0 /* Timisoara.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Timisoara.gpx; sourceTree = "<group>"; };
 		FA53BB3D205D3C1D00C203F9 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA53BB40205D3C1D00C203F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA53BB42205D3C1D00C203F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FA53BB45205D3C1D00C203F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA53BB47205D3C1D00C203F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA53BB4A205D3C1D00C203F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA53BB4C205D3C1D00C203F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA53BB52205D3C4E00C203F9 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		FA53BB54205D3DF000C203F9 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		FA53BB56205D3F6800C203F9 /* WeatherHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHandler.swift; sourceTree = "<group>"; };
+		FAA2A71C206B106000BFB51A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		FAA2A720206B1A3100BFB51A /* SuggestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableViewCell.swift; sourceTree = "<group>"; };
+		FAA2A722206D65EC00BFB51A /* DetailedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAA2A724206D661900BFB51A /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
+		FAAECDDB20654BD500B0B484 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAB2BD97206A930100C7F831 /* AddCityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAB2BD9B206AE26200C7F831 /* CityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +76,20 @@
 		FA53BB3F205D3C1D00C203F9 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				FAB2BD9B206AE26200C7F831 /* CityManager.swift */,
 				FA53BB40205D3C1D00C203F9 /* AppDelegate.swift */,
-				FA53BB42205D3C1D00C203F9 /* ViewController.swift */,
 				FA53BB44205D3C1D00C203F9 /* Main.storyboard */,
+				FA27286C2063E21600DCD852 /* ListViewController.swift */,
+				FAA2A724206D661900BFB51A /* DetailedViewController.swift */,
+				FA53BB52205D3C4E00C203F9 /* WeatherData.swift */,
+				FAAECDDB20654BD500B0B484 /* ListCollectionViewCell.swift */,
+				FAA2A722206D65EC00BFB51A /* DetailedCollectionViewCell.swift */,
+				FAB2BD97206A930100C7F831 /* AddCityCollectionViewCell.swift */,
+				FAA2A720206B1A3100BFB51A /* SuggestionsTableViewCell.swift */,
+				FA53BB54205D3DF000C203F9 /* City.swift */,
+				FA53BB56205D3F6800C203F9 /* WeatherHandler.swift */,
+				FAA2A71C206B106000BFB51A /* SearchViewController.swift */,
+				FA4372D4207E1E0C009984A0 /* Timisoara.gpx */,
 				FA53BB47205D3C1D00C203F9 /* Assets.xcassets */,
 				FA53BB49205D3C1D00C203F9 /* LaunchScreen.storyboard */,
 				FA53BB4C205D3C1D00C203F9 /* Info.plist */,
@@ -91,7 +124,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Alex Dinu";
 				TargetAttributes = {
 					FA53BB3C205D3C1D00C203F9 = {
@@ -124,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA53BB4B205D3C1D00C203F9 /* LaunchScreen.storyboard in Resources */,
+				FA4372D5207E1E0C009984A0 /* Timisoara.gpx in Resources */,
 				FA53BB48205D3C1D00C203F9 /* Assets.xcassets in Resources */,
 				FA53BB46205D3C1D00C203F9 /* Main.storyboard in Resources */,
 			);
@@ -136,7 +170,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA53BB43205D3C1D00C203F9 /* ViewController.swift in Sources */,
+				FAB2BD9C206AE26200C7F831 /* CityManager.swift in Sources */,
+				FAA2A721206B1A3100BFB51A /* SuggestionsTableViewCell.swift in Sources */,
+				FAA2A725206D661900BFB51A /* DetailedViewController.swift in Sources */,
+				FAAECDDC20654BD500B0B484 /* ListCollectionViewCell.swift in Sources */,
+				FA53BB53205D3C4E00C203F9 /* WeatherData.swift in Sources */,
+				FAA2A71D206B106000BFB51A /* SearchViewController.swift in Sources */,
+				FA53BB57205D3F6800C203F9 /* WeatherHandler.swift in Sources */,
+				FA53BB55205D3DF000C203F9 /* City.swift in Sources */,
+				FA27286D2063E21600DCD852 /* ListViewController.swift in Sources */,
+				FAA2A723206D65EC00BFB51A /* DetailedCollectionViewCell.swift in Sources */,
+				FAB2BD98206A930100C7F831 /* AddCityCollectionViewCell.swift in Sources */,
 				FA53BB41205D3C1D00C203F9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,6 +221,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -184,6 +229,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -211,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -234,6 +280,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -241,6 +288,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -262,7 +310,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
