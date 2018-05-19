@@ -42,4 +42,8 @@ class City: NSObject, NSCoding {
     func printself() {
         print(lat, long, name, countryCode)
     }
+    
+    static func == (lhs: City, rhs: City) -> Bool {
+        return lhs.name == rhs.name && lhs.countryCode == rhs.countryCode
+    }
 }

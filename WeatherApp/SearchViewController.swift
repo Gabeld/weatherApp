@@ -70,9 +70,21 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let countryCode = placemark.isoCountryCode!
                 let currentCity = City(lat: 0, long: 0, name: name, countryCode: countryCode)
                 DispatchQueue.main.async {
-                    CityManager.shared.cities.append(currentCity)
-                    self.dismiss(animated: true, completion: nil)
-                    self.resignFirstResponder()
+                    var isPresent = false
+                    for city in CityManager.shared.cities {
+                        if city == currentCity {
+                            isPresent = true
+                        }
+                    }
+                    if isPresent {
+                        let errorAC = UIAlertController(title: "Ooops", message: "This city is already listed.", preferredStyle: .alert)
+                        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        errorAC.addAction(okButton)
+                        self.present(errorAC, animated: true, completion: nil)
+                    } else {
+                        CityManager.shared.cities.append(currentCity)
+                        self.dismiss(animated: true, completion: nil)
+                    }
                 }
                 
             } else {
