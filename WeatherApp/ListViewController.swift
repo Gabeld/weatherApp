@@ -15,7 +15,6 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @IBOutlet var collectionView: UICollectionView!
     let weatherHandler = WeatherHandler()
-    var cities: [City] = [City(lat: 0, long: 0, name: "London", countryCode: "UK"), City(lat: 0, long: 0, name: "Arad", countryCode: "RO"), City(lat: 0, long: 0, name: "Timisoara", countryCode: "RO"),City(lat: 0, long: 0, name: "Moscow", countryCode: "RU"), City(lat: 0, long: 0, name: "Paris", countryCode: "FR")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +26,6 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         for city in CityManager.shared.cities {
             weatherHandler.weatherForCity(city: city) { (succes) in
-                let weatherData = city.weatherData.first
-                weatherData?.printWeatherData()
                 self.collectionView.reloadData()
             }
         }
@@ -44,7 +41,7 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 8, 0, 8)
+        return UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: 8)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -66,11 +63,28 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
             return addCell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.reuseIdentifier, for: indexPath) as! ListCollectionViewCell
+            cell.longPressAction = {cell in
+                let alertVC = UIAlertController(title: "\(cell.cityNameLabel.text ?? "")", message: "Are you sure you want to delete the city?", preferredStyle: .actionSheet)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+                    if let indexPath = collectionView.indexPath(for: cell) {
+                        CityManager.shared.cities.remove(at: indexPath.row)
+                        collectionView.deleteItems(at: [indexPath])
+                    }
+                }
+                alertVC.addAction(cancelAction)
+                alertVC.addAction(deleteAction)
+                self.present(alertVC, animated: true, completion: nil)
+            }
             
             cell.cityNameLabel.text = CityManager.shared.cities[indexPath.row].name
             if let currentTemperature = CityManager.shared.cities[indexPath.row].weatherData.first {
-                cell.temperature = Int(round(currentTemperature.value.value))
+                cell.temperature = Int(round(currentTemperature.avgTemp.value))
                 cell.mainConditionID = currentTemperature.conditionID
+            } else {
+                cell.temperature = 0
+                cell.temperatureLabel.text = "-.-"
+                cell.imageView.image = nil
             }
             return cell
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailedCollectionViewCell: UICollectionViewCell {
+class DetailedCollectionViewCell: UICollectionViewCell, WeatherDataRendering {
     
     @IBOutlet var maxTemperatureLabel: UILabel!
     @IBOutlet var minTemperatureLabel: UILabel!
@@ -18,5 +18,18 @@ class DetailedCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    var temperature = 0 {
+        didSet {
+            temperatureLabel.text = "\(String(temperature)) °C"
+            backgroundColor = temperatureColor(temperature: temperature)
+        }
+    }
+    
+    var mainConditionID: Int = 0 {
+        didSet {
+            mainWeatherIcon.image = iconForWeatherCondition(conditionID: mainConditionID)
+        }
     }
 }

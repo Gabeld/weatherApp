@@ -14,6 +14,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchTextField: UITextField!
     
+
     var searchCompleter = MKLocalSearchCompleter()
     var searchResult = [MKLocalSearchCompletion]()
     
@@ -61,14 +62,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.deselectRow(at: indexPath, animated: true)
         
         let completion = searchResult[indexPath.row]
-        let searchRequest = MKLocalSearchRequest(completion: completion)
+        let searchRequest = MKLocalSearch.Request(completion: completion)
         let search = MKLocalSearch(request: searchRequest)
         
         search.start { (response, error ) in
             if let placemark = response?.mapItems[0].placemark {
                 let name = placemark.name!
                 let countryCode = placemark.isoCountryCode!
-                let currentCity = City(lat: 0, long: 0, name: name, countryCode: countryCode)
+                let currentCity = City(lat: placemark.coordinate.latitude, long: placemark.coordinate.longitude, name: name, countryCode: countryCode)
                 DispatchQueue.main.async {
                     var isPresent = false
                     for city in CityManager.shared.cities {

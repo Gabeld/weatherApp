@@ -8,65 +8,48 @@
 
 import UIKit
 
-class ListCollectionViewCell: UICollectionViewCell {
+class ListCollectionViewCell: UICollectionViewCell, WeatherDataRendering {
+    
     static let reuseIdentifier = "ListCollectionViewCell"
     
     @IBOutlet var cityNameLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var temperatureLabel: UILabel!
+    @IBOutlet var cellContentView: UIView!
     
     var temperature: Int = 0 {
         didSet {
             temperatureLabel.text = "\(String(temperature)) °C"
+            backgroundColor = temperatureColor(temperature: temperature)
             
-            switch temperature {
-            case _ where temperature <= 0:
-                backgroundColor = UIColor(red: 0/255, green: 49/255, blue: 113/255, alpha: 1)
-            case 0...9:
-                backgroundColor = UIColor(red: 4/255, green: 79/255, blue: 103/255, alpha: 1)
-            case 10...25:
-                backgroundColor = UIColor(red: 210/255, green: 77/255, blue: 87/255, alpha: 1)
-            case _ where temperature > 25:
-                backgroundColor = UIColor(red: 157/255, green: 41/255, blue: 51/255, alpha: 1)
-            default:
-                break
-            }
         }
     }
     
     var mainConditionID: Int = 0 {
         didSet {
-        
-            switch mainConditionID {
-            case 200...299:
-                imageView.image = #imageLiteral(resourceName: "tstorms")
-            case 300...399:
-                imageView.image = #imageLiteral(resourceName: "sleet")
-            case 500...599:
-                imageView.image = #imageLiteral(resourceName: "rain")
-            case 600...699:
-                imageView.image = #imageLiteral(resourceName: "snow")
-            case 700...799:
-                imageView.image = #imageLiteral(resourceName: "hazy")
-            case 800:
-                imageView.image = #imageLiteral(resourceName: "sunny_big")
-            case 801...899:
-                imageView.image = #imageLiteral(resourceName: "nt_cloudy")
-            case 900...910:
-                imageView.image = #imageLiteral(resourceName: "sunny_big")
-            case 950...999:
-                imageView.image = #imageLiteral(resourceName: "sunny_big")
-            default:
-                break
-            }
+            imageView.image = iconForWeatherCondition(conditionID: mainConditionID)
         }
     }
     
+    
+    var longPressAction: ((ListCollectionViewCell) -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
+        let longGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressRecognized(_:)))
+        cellContentView.addGestureRecognizer(longGestureRecognizer)
+        
         layer.cornerRadius = 7
         layer.masksToBounds = true
     }
     
+    @objc func longPressRecognized(_ gesture: UIGestureRecognizer) {
+        if gesture.state == .began {
+            if let longPressAction = longPressAction {
+                longPressAction(self)
+            }
+        }
+    }
+
 }

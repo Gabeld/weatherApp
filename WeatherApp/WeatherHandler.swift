@@ -18,7 +18,8 @@ class WeatherHandler {
         
         let parameters = [
                         "APPID": apiKey,
-                        "q": "\(city.name),\(city.countryCode)",
+                        "lat": "\(city.lat)",
+                        "lon": "\(city.long)",
                         "units": "metric"]
         
         for (key, value) in parameters {
@@ -44,31 +45,32 @@ class WeatherHandler {
                     let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
                     guard
                         let jsonDictionary = jsonObject as? [String: AnyObject],
-                        let jsonCity = jsonDictionary["city"] as? [String: AnyObject],
-                        let coords = jsonCity["coord"] as? [String: Double],
                         let weatherList = jsonDictionary["list"] as? [[String: AnyObject]] else {
                             DispatchQueue.main.async {
                                 completion(false)
                             }
                             return
                     }
-                    city.lat = coords["lat"] ?? 0
-                    city.long = coords["lon"] ?? 0
-                    print(weatherList, city.lat, city.long)
+
                     var weatherDataList = [WeatherData]()
                     
                     for weatherItem in weatherList {
                         let weatherArrray = weatherItem["weather"] as? [[String: AnyObject]]
-                        
                         let weatherDictionary = weatherArrray?.first
                         let weatherCondition = weatherDictionary!["main"] as!  String
                         let conditionID = weatherDictionary!["id"] as! Int
                         let date = weatherItem["dt"]
                         let weatherDate = Date(timeIntervalSince1970: date!.doubleValue)
+                        print(weatherDate)
                         let tempDictionary = weatherItem["main"] as? [String: Double]
                         let tempValue = tempDictionary!["temp"] ?? 0
-                        let value = Measurement(value: tempValue, unit: UnitTemperature.celsius)
-                        let weatherData = WeatherData(date: weatherDate, value: value, condition: weatherCondition, conditionID: conditionID)
+                        let minValue = tempDictionary!["temp_min"] ?? 0
+                        let maxValue = tempDictionary!["temp_max"] ?? 0
+                        let currTemperature = Measurement(value: tempValue, unit: UnitTemperature.celsius)
+                        let minTemperature = Measurement(value: minValue, unit: UnitTemperature.celsius)
+                        let maxTemperature = Measurement(value: maxValue, unit: UnitTemperature.celsius)
+                        let weatherData = WeatherData(date: weatherDate, avgTemp: currTemperature, minTemp: minTemperature, maxTemp: maxTemperature, condition: weatherCondition, conditionID: conditionID)
+                        
                         weatherDataList.append(weatherData)
                     }
                     
@@ -77,7 +79,6 @@ class WeatherHandler {
                     DispatchQueue.main.async {
                         completion(true)
                     }
-                    print(city)
                 } catch let error {
                     DispatchQueue.main.async {
                         completion(false)

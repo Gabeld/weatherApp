@@ -20,6 +20,7 @@
 		FAA2A721206B1A3100BFB51A /* SuggestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2A720206B1A3100BFB51A /* SuggestionsTableViewCell.swift */; };
 		FAA2A723206D65EC00BFB51A /* DetailedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2A722206D65EC00BFB51A /* DetailedCollectionViewCell.swift */; };
 		FAA2A725206D661900BFB51A /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2A724206D661900BFB51A /* DetailedViewController.swift */; };
+		FAACAA3F20B0934C00B51E9D /* WeatherDataRendering.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAACAA3E20B0934C00B51E9D /* WeatherDataRendering.swift */; };
 		FAAECDDC20654BD500B0B484 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAECDDB20654BD500B0B484 /* ListCollectionViewCell.swift */; };
 		FAB2BD98206A930100C7F831 /* AddCityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2BD97206A930100C7F831 /* AddCityCollectionViewCell.swift */; };
 		FAB2BD9C206AE26200C7F831 /* CityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2BD9B206AE26200C7F831 /* CityManager.swift */; };
@@ -41,6 +42,7 @@
 		FAA2A720206B1A3100BFB51A /* SuggestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableViewCell.swift; sourceTree = "<group>"; };
 		FAA2A722206D65EC00BFB51A /* DetailedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAA2A724206D661900BFB51A /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
+		FAACAA3E20B0934C00B51E9D /* WeatherDataRendering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataRendering.swift; sourceTree = "<group>"; };
 		FAAECDDB20654BD500B0B484 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAB2BD97206A930100C7F831 /* AddCityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAB2BD9B206AE26200C7F831 /* CityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityManager.swift; sourceTree = "<group>"; };
@@ -80,14 +82,15 @@
 				FA53BB40205D3C1D00C203F9 /* AppDelegate.swift */,
 				FA53BB44205D3C1D00C203F9 /* Main.storyboard */,
 				FA27286C2063E21600DCD852 /* ListViewController.swift */,
-				FAA2A724206D661900BFB51A /* DetailedViewController.swift */,
-				FA53BB52205D3C4E00C203F9 /* WeatherData.swift */,
 				FAAECDDB20654BD500B0B484 /* ListCollectionViewCell.swift */,
+				FAA2A724206D661900BFB51A /* DetailedViewController.swift */,
 				FAA2A722206D65EC00BFB51A /* DetailedCollectionViewCell.swift */,
 				FAB2BD97206A930100C7F831 /* AddCityCollectionViewCell.swift */,
 				FAA2A720206B1A3100BFB51A /* SuggestionsTableViewCell.swift */,
 				FA53BB54205D3DF000C203F9 /* City.swift */,
+				FA53BB52205D3C4E00C203F9 /* WeatherData.swift */,
 				FA53BB56205D3F6800C203F9 /* WeatherHandler.swift */,
+				FAACAA3E20B0934C00B51E9D /* WeatherDataRendering.swift */,
 				FAA2A71C206B106000BFB51A /* SearchViewController.swift */,
 				FA4372D4207E1E0C009984A0 /* Timisoara.gpx */,
 				FA53BB47205D3C1D00C203F9 /* Assets.xcassets */,
@@ -129,6 +132,7 @@
 				TargetAttributes = {
 					FA53BB3C205D3C1D00C203F9 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -175,6 +179,7 @@
 				FAA2A725206D661900BFB51A /* DetailedViewController.swift in Sources */,
 				FAAECDDC20654BD500B0B484 /* ListCollectionViewCell.swift in Sources */,
 				FA53BB53205D3C4E00C203F9 /* WeatherData.swift in Sources */,
+				FAACAA3F20B0934C00B51E9D /* WeatherDataRendering.swift in Sources */,
 				FAA2A71D206B106000BFB51A /* SearchViewController.swift in Sources */,
 				FA53BB57205D3F6800C203F9 /* WeatherHandler.swift in Sources */,
 				FA53BB55205D3DF000C203F9 /* City.swift in Sources */,
@@ -257,7 +262,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -310,7 +315,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -328,7 +333,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Learn.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -343,7 +348,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Learn.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
