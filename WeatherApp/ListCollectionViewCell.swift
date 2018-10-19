@@ -42,6 +42,7 @@ class ListCollectionViewCell: UICollectionViewCell, WeatherDataRendering {
         
         layer.cornerRadius = 7
         layer.masksToBounds = true
+        cityNameLabel.lineBreakMode = .byCharWrapping
     }
     
     @objc func longPressRecognized(_ gesture: UIGestureRecognizer) {
