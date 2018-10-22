@@ -48,12 +48,6 @@ class DetailedViewController: UIViewController, UICollectionViewDataSource, UICo
         super.viewDidLoad()
         viewDidLayoutSubviewsForTheFirstTime = true
         detailedCollectionView.reloadData()
-        
-        let topConstraint = detailedCollectionView.topAnchor.constraint(equalTo: view.topAnchor)
-        topConstraint.isActive = true
-        let botConstraint = stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        botConstraint.isActive = true
-        
         pageController.numberOfPages = CityManager.shared.cities.count
         
         getDataForCurrentCity()
@@ -163,7 +157,6 @@ class DetailedViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func updateForecast() {
-        
         for tag in 1...5 {
             if let value = weatherData[tag] {
                 let temp = value["avgTemp"]

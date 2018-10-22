@@ -21,7 +21,6 @@ class ListCollectionViewCell: UICollectionViewCell, WeatherDataRendering {
         didSet {
             temperatureLabel.text = "\(String(temperature)) °C"
             backgroundColor = temperatureColor(temperature: temperature)
-            
         }
     }
     
@@ -42,7 +41,6 @@ class ListCollectionViewCell: UICollectionViewCell, WeatherDataRendering {
         
         layer.cornerRadius = 7
         layer.masksToBounds = true
-        cityNameLabel.lineBreakMode = .byCharWrapping
     }
     
     @objc func longPressRecognized(_ gesture: UIGestureRecognizer) {
@@ -52,5 +50,4 @@ class ListCollectionViewCell: UICollectionViewCell, WeatherDataRendering {
             }
         }
     }
-
 }

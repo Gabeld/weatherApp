@@ -23,11 +23,11 @@ class CityManager {
     func save(){
         print("Saving user data to \(cityArchiveURL)")
         do {
-           let data = try NSKeyedArchiver.archivedData(withRootObject: cities, requiringSecureCoding: false)
+            let data = try NSKeyedArchiver.archivedData(withRootObject: cities, requiringSecureCoding: false)
             try data.write(to: cityArchiveURL)
             
         } catch {
-            fatalError("Error encoding \(error)")
+            print("Error encoding \(error)")
         }
     }
     
@@ -35,7 +35,7 @@ class CityManager {
         do {
             let data = try Data(contentsOf: cityArchiveURL)
             guard let array = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [City] else {
-                fatalError("Can't get array")
+                return
             }
             cities = array
         } catch {

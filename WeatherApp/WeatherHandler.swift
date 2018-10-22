@@ -36,8 +36,7 @@ class WeatherHandler {
         }
         
         let request = URLRequest(url: cityURL)
-        let task = URLSession.shared.dataTask(with: request) {
-            (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if let jsonData = data {
                 do {
@@ -47,15 +46,15 @@ class WeatherHandler {
                             DispatchQueue.main.async {
                                 completion(false)
                             }
-                        return
+                            return
                     }
                     
                     let date = jsonDictionary["dt"]
-                    let weatherDate = Date(timeIntervalSince1970: date!.doubleValue)
+                    let weatherDate = Date(timeIntervalSince1970: date?.doubleValue ?? 0)
                     let weatherArray = jsonDictionary["weather"] as? [[String: AnyObject]]
                     let weatherDictionary = weatherArray?.first
-                    let weatherCondition = weatherDictionary!["main"] as!  String
-                    let conditionID = weatherDictionary!["id"] as! Int
+                    let weatherCondition = weatherDictionary?["main"] as?  String
+                    let conditionID = weatherDictionary?["id"] as? Int
                     let weatherMain = jsonDictionary["main"] as! [String: Double]
                     let tempValue = weatherMain["temp"] ?? 0
                     let minValue = weatherMain["temp_min"] ?? 0
@@ -64,16 +63,15 @@ class WeatherHandler {
                     let minTemperature = Measurement(value: minValue, unit: UnitTemperature.celsius)
                     let maxTemperature = Measurement(value: maxValue, unit: UnitTemperature.celsius)
                     
-                    let currentWeatherData = WeatherData(date: weatherDate, avgTemp: currTemperature, minTemp: minTemperature, maxTemp: maxTemperature, condition: weatherCondition, conditionID: conditionID)
+                    let currentWeatherData = WeatherData(date: weatherDate, avgTemp: currTemperature, minTemp: minTemperature, maxTemp: maxTemperature, condition: weatherCondition ?? "", conditionID: conditionID ?? 0)
                     
-                    city.weatherData.append(currentWeatherData)
+                    city.weatherData = [currentWeatherData]
                     
                     DispatchQueue.main.async {
                         completion(true)
                     }
                     
-                }
-                catch let error {
+                } catch let error {
                     DispatchQueue.main.async {
                         completion(false)
                     }
@@ -88,7 +86,7 @@ class WeatherHandler {
         task.resume()
     }
     
-    func weatherForCity(city: City) {
+    func updateWeather(forCity city: City) {
         var components = URLComponents(string: "\(baseURLString)/forecast")
         var queryItems = [URLQueryItem]()
         
@@ -110,8 +108,7 @@ class WeatherHandler {
         
         var request = URLRequest(url: cityURL)
         request.addValue("Accept", forHTTPHeaderField: "application/json")
-        let task = URLSession.shared.dataTask(with: request) {
-            (data, response, error) -> Void in
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
             
             if let jsonData = data {
                 do {
@@ -121,7 +118,6 @@ class WeatherHandler {
                         let weatherList = jsonDictionary["list"] as? [[String: AnyObject]] else {
                             return
                     }
-                    
                     for weatherItem in weatherList {
                         let weatherArrray = weatherItem["weather"] as? [[String: AnyObject]]
                         let weatherDictionary = weatherArrray?.first
@@ -140,7 +136,6 @@ class WeatherHandler {
                         
                         city.weatherData.append(weatherData)
                     }
-                    
                 } catch let error {
                     print("Error reading jsonData \(error)")
                 }

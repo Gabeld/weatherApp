@@ -28,7 +28,7 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
         // do whatever you want when the app is brought back to the foreground
         for city in CityManager.shared.cities {
             weatherHandler.currentWeatherForCity(city: city) { (succes) in
-                self.weatherHandler.weatherForCity(city: city)
+                self.weatherHandler.updateWeather(forCity: city)
                 self.collectionView.reloadData()
             }
         }
@@ -44,7 +44,7 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
 
         for city in CityManager.shared.cities {
             weatherHandler.currentWeatherForCity(city: city) { (succes) in
-                self.weatherHandler.weatherForCity(city: city)
+                self.weatherHandler.updateWeather(forCity: city)
                 self.collectionView.reloadData()
             }
         }
