@@ -26,12 +26,10 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @objc func didBecomeActive(notification: NSNotification!) {
         // do whatever you want when the app is brought back to the foreground
-        for city in CityManager.shared.cities {
-            weatherHandler.currentWeatherForCity(city: city) { (succes) in
-                self.weatherHandler.updateWeather(forCity: city)
-                self.collectionView.reloadData()
-            }
+        weatherHandler.getWeatherForCities { (succes) in
+            self.collectionView.reloadData()
         }
+        collectionView.reloadData()
     }
     
     deinit {
@@ -41,14 +39,9 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        for city in CityManager.shared.cities {
-            weatherHandler.currentWeatherForCity(city: city) { (succes) in
-                self.weatherHandler.updateWeather(forCity: city)
-                self.collectionView.reloadData()
-            }
+        weatherHandler.getWeatherForCities { (succes) in
+            self.collectionView.reloadData()
         }
-        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -86,7 +86,7 @@ class WeatherHandler {
         task.resume()
     }
     
-    func updateWeather(forCity city: City) {
+    func updateWeather(forCity city: City, completion: @escaping (_ result: Bool) -> Void) {
         var components = URLComponents(string: "\(baseURLString)/forecast")
         var queryItems = [URLQueryItem]()
         
@@ -116,6 +116,9 @@ class WeatherHandler {
                     guard
                         let jsonDictionary = jsonObject as? [String: AnyObject],
                         let weatherList = jsonDictionary["list"] as? [[String: AnyObject]] else {
+                            DispatchQueue.main.async {
+                                completion(false)
+                            }
                             return
                     }
                     for weatherItem in weatherList {
@@ -135,12 +138,53 @@ class WeatherHandler {
                         let weatherData = WeatherData(date: weatherDate, avgTemp: currTemperature, minTemp: minTemperature, maxTemp: maxTemperature, condition: weatherCondition, conditionID: conditionID)
                         
                         city.weatherData.append(weatherData)
+                        
+                        DispatchQueue.main.async {
+                            completion(true)
+                        }
+                        
                     }
                 } catch let error {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
                     print("Error reading jsonData \(error)")
                 }
-            } 
+            } else {
+                DispatchQueue.main.async {
+                    completion(false)
+                }
+            }
         }
         task.resume()
+    }
+    
+    func getWeatherForCities(completion: @escaping (_ result: Bool) -> Void) {
+        for city in CityManager.shared.cities {
+            currentWeatherForCity(city: city) { (result) in
+                if result == true {
+                    DispatchQueue.main.async {
+                        completion(true)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                    return
+                }
+            }
+            updateWeather(forCity: city) { (result) in
+                if result == true {
+                    DispatchQueue.main.async {
+                        completion(true)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                    return
+                }
+            }
+        }
     }
 }

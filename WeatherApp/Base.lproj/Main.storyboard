@@ -314,9 +314,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDa-o0-6q0">
-                                                    <rect key="frame" x="141.5" y="321" width="91" height="43"/>
+                                                    <rect key="frame" x="132" y="321" width="110" height="43"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="91" id="3Br-5K-Ks6"/>
+                                                        <constraint firstAttribute="width" constant="110" id="3Br-5K-Ks6"/>
                                                         <constraint firstAttribute="height" constant="43" id="Ef4-ak-Lim"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
@@ -615,6 +615,7 @@
                             <constraint firstAttribute="trailing" secondItem="bqy-pE-CSo" secondAttribute="trailing" id="pdQ-lm-XbF"/>
                             <constraint firstItem="r6s-6U-6dY" firstAttribute="centerY" secondItem="WgJ-kp-1u7" secondAttribute="centerY" id="xmO-v1-res"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="fj2-ZO-IvR"/>
                     </view>
                     <connections>
                         <outlet property="detailedCollectionView" destination="bqy-pE-CSo" id="4MF-ZS-7hy"/>

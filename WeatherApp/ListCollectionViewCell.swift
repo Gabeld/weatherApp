@@ -30,7 +30,6 @@ class ListCollectionViewCell: UICollectionViewCell, WeatherDataRendering {
         }
     }
     
-    
     var longPressAction: ((ListCollectionViewCell) -> Void)?
     
     override func awakeFromNib() {

@@ -38,7 +38,7 @@ class DetailedViewController: UIViewController, UICollectionViewDataSource, UICo
         super.viewDidLayoutSubviews()
         guard viewDidLayoutSubviewsForTheFirstTime == true else { return }
         viewDidLayoutSubviewsForTheFirstTime = false
-
+        
         // Calling collectionViewContentSize forces the UICollectionViewLayout to actually render the layout
         let _ = detailedCollectionView.collectionViewLayout.collectionViewContentSize
         detailedCollectionView.scrollToItem(at: itemIndex, at: .right, animated: false)
@@ -72,7 +72,6 @@ class DetailedViewController: UIViewController, UICollectionViewDataSource, UICo
                 detailedCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
             }
         }
-        updateForecast()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -104,9 +103,12 @@ class DetailedViewController: UIViewController, UICollectionViewDataSource, UICo
         let width = scrollView.frame.width
         let horizontalCenter = width / 2
         
-        pageController.currentPage = Int(offSet + horizontalCenter) / Int(width)
-        getDataForCurrentCity()
-        updateForecast()
+        let newPage = Int(offSet + horizontalCenter) / Int(width)
+        if pageController.currentPage != newPage {
+            pageController.currentPage = newPage
+            getDataForCurrentCity()
+            updateForecast()
+        }
     }
     
     func filterWeatherData(dataArray: [WeatherData], key: Int) {
