@@ -21,7 +21,6 @@ class ListCollectionViewCell: UICollectionViewCell, WeatherDataRendering {
         didSet {
             temperatureLabel.text = "\(String(temperature)) °C"
             backgroundColor = temperatureColor(temperature: temperature)
-            
         }
     }
     
@@ -30,7 +29,6 @@ class ListCollectionViewCell: UICollectionViewCell, WeatherDataRendering {
             imageView.image = iconForWeatherCondition(conditionID: mainConditionID)
         }
     }
-    
     
     var longPressAction: ((ListCollectionViewCell) -> Void)?
     
@@ -51,5 +49,4 @@ class ListCollectionViewCell: UICollectionViewCell, WeatherDataRendering {
             }
         }
     }
-
 }

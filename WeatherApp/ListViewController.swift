@@ -19,17 +19,29 @@ class ListViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.requestWhenInUseAuthorization()
+        collectionView.reloadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    @objc func didBecomeActive(notification: NSNotification!) {
+        // do whatever you want when the app is brought back to the foreground
+        weatherHandler.getWeatherForCities { (succes) in
+            self.collectionView.reloadData()
+        }
+        collectionView.reloadData()
+    }
+    
+    deinit {
+        // make sure to remove the observer when this view controller is dismissed/deallocated
+        NotificationCenter.default.removeObserver(self, name: nil, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        for city in CityManager.shared.cities {
-            weatherHandler.weatherForCity(city: city) { (succes) in
-                self.collectionView.reloadData()
-            }
+        weatherHandler.getWeatherForCities { (succes) in
+            self.collectionView.reloadData()
         }
-        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
